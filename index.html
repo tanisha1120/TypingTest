@@ -1,860 +1,1021 @@
-<html data-theme = "dark">
-    <head>
-        <title> Typing test By tanvi</title>
-        <link rel = "preconnect" href = "https://fonts.googleapis.com">
-        <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
-        <link href = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel = "stylesheet">
+<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+    <title>Typing Test By Tanvi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-        <style>
-            :root{
-                --bg: #0f0f13;
-                --surface : #16161d;
-                --surface2: #1e1e28;
-                --border: rgba(255,255,255,0.08);
-                --text : #e8e6f0;
-                --muted: #7a7890;
-                --faint: #3a3850;
-                --accent: #7c6fff;
-                --accent-glow: rgba(124,111,255,0.25);
-                --green: #4ade80;
-                --red: #f87171;
-                --yellow: #fbbf24;
-                --font-body: 'Space Grotesk', sans-serif;
-                --font-mono: 'JetBrains Mono' monospace;
-            }
-            [data-theme="light"]{
-                --bg : #f5f4f9;
-                --surface: #ffffff;
-                --surface2 : #eeedf6;
-                --border: rgba(0,0,0,0.08);
-                --text: #1a1828;
-                --muted: #6b6880;
-                --faint: #c8c6d8;
-                --accent: #5b4ef0;
-                --accent-glow: rgba(91,78,240,0.15);
-            }
-            *,*::before, *::after{
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
+    <style>
+        :root {
+            --bg: #0f0f13;
+            --surface: #16161d;
+            --surface2: #1e1e28;
+            --border: rgba(255,255,255,0.08);
+            --text: #e8e6f0;
+            --muted: #7a7890;
+            --faint: #3a3850;
+            --accent: #7c6fff;
+            --accent-glow: rgba(124,111,255,0.25);
+            --green: #4ade80;
+            --red: #f87171;
+            --yellow: #fbbf24;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; 
+        }
+        [data-theme="light"] {
+            --bg: #f5f4f9;
+            --surface: #ffffff;
+            --surface2: #eeedf6;
+            --border: rgba(0,0,0,0.08);
+            --text: #1a1828;
+            --muted: #6b6880;
+            --faint: #c8c6d8;
+            --accent: #5b4ef0;
+            --accent-glow: rgba(91,78,240,0.15);
+        }
 
-            html{
-                font-size: 16px;
-                scroll-behavior: smooth;
-            }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-            body{
-                font-family: var(--font-body);
-                background: var(--bg);
-                color: var(--text);
-                min-height: 100dvh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 1rem 4rem;
-                transition: background 0.3s, color 0.3s;
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
 
-            }
-            .header{
-                width: 100%;
-                max-width: 860px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 2.5rem;
-            }
-            .logo{
-                display: flex;
-                align-items: center;
-                gap:0.5rem;
-                font-weight: 700;
-                font-size: 1.2rem;
-                letter-spacing: -0.02rem;
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 4rem;
+            transition: background 0.3s, color 0.3s;
+        }
 
-            }
-            .logo-icon{
-                width:32px;
-                height: 32px;
-                background: var(--accent);
-                border-radius: 8px;
-                display: grid;
-                place-items: center;
-                font-size: 0.9;
+        .header {
+            width: 100%;
+            max-width: 860px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
 
-            }
-            .theme-btn{
-                background: var(--surface);
-                border: 1 solid var(--border);
-                color: var(--text);
-                width: 38;
-                height: 38;
-                border-radius: 10;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: background 0.2s;
-                display: grid;
-                place-items: center;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.02rem;
+        }
 
-            }
-            .theme-btn::hover{
-                background: var(--faint);
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem; 
+        }
 
-            }
-            .stats-bar {
-                width: 100;
-                max-width: 860;
-                display: grid;
-                grid-template-columns: repeat(4,1fr);
-                gap:1rem;
-                margin-bottom: 2rem;
-            }
-            .stat-card{
-                background: var(--surface);
-                border:1 solid var(--border);
-                border-radius: 14;
-                padding: 1rem 1.25rem;
-                text-align: center;
-                transition: border-color 0.3s;
+        .theme-btn {
+            background: var(--surface);
+            border: 1px solid var(--border); 
+            color: var(--text);
+            width: 38px;  
+            height: 38px;  
+            border-radius: 10px; 
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+            display: grid;
+            place-items: center;
+        }
 
+        .theme-btn:hover { 
+            background: var(--faint);
+        }
 
-            }
-            .stat-value{
-                font-family: var(--font-mono);
-                font-size: 2rem;
-                font-weight: 600;
-                line-height: 1;
-                color: var(--accent);
-                margin-bottom: 0.25rem;
-                transition: all 0.3s;
-            }
-            .stat-label{
-                font-size: 0.72rem;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                color:var(--muted);
-                font-weight: 500;
-            }
-            #timer-val{
-                color: var(--yellow);
-            }
-            #acc-val{
-                color: var(--green);
-            }
+        .stats-bar {
+            width: 100%; 
+            max-width: 860px; 
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
 
-            .timer-ring-wrap{
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 0.25rem;
-            }
-            .ring-bg{
-                fill: none;
-                stroke: var(--faint);
-            }
-            .ring-fill{
-                fill: none;
-                stroke: var(--yellow);
-                stroke-width: 4;
-                stroke-linecap: round;
-                stroke-dasharray: 100;
-                stroke-dashoffset: 0;
-                transition: stroke-dashoffset 1s linear, stroke 0.5s;
-            }
-            .ring-text{
-                position: absolute;
-                font-family: var(--font-mono);
-                font-size: 1.1rem;
-                font-weight: 600;
-                color:var(--yellow);
-                line-height: 1;
-            }
-            .test-container{
-                width:100%;
-                max-width: 860;
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 20px;
-                padding: 2rem;
-                margin-bottom: 1.5rem;
-            }
-            .controls{
-                display: flex;
-                gap:0.75rem;
-                flex-wrap: wrap;
-                margin-bottom: 1.5rem;
-                align-items: center;
-            }
-            .ctrl-label{
-                font-size: 0.78rem;
-                color:var(--muted);
-                text-transform: uppercase;
-                letter-spacing: 0.06em;
-                font-weight: 600;
-            }
-            .chip-group{
-                display: flex;
-                gap:0.4rem;
-            }
-            .chip{
-                background: var(--surface2);
-                border: 1px solid var(---border);
-                color: var(--muted);
-                padding: 0.35rem 0.85rem;
-                border-radius:999px;
-                font-size:0.8rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.2s;
-                font-family: var(--font-body);
-            }
-            .chip:hover{
-                border-color: var(--accent);
-                color: var(--text);
-            }
-            .chip.active{
-                background: var(--accent);
-                border-color: var(--border);
-                color: #fff;
-            }
-            .divider-v{
-                width: 1;
-                height: 24;
-                background: var(--border);
-                margin: 0 0.25rem;
-            }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border); 
+            border-radius: 14px; 
+            padding: 1rem 1.25rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
 
-            .passage-wrap{
-                background: var(--surface2);
-                border-radius: 14;
-                padding: 1.5;
-                margin-bottom: 1.25;
-                line-height: 1.9;
-                font-size: 1.05;
-                font-family: var(--font-mono);
-                letter-spacing: 0.01em;
-                min-height: 100;
-                user-select: none;
-            }
-            .char{
-                display: inline-block;
-                position: relative;
-            }
-            .char.correct{
-                color:var(--green);
-            }
-            .char.wrong{
-                color: var(--red);
-                text-decoration: underline;
-                text-underline-offset: 3px;
-            }
-            .char-pending{
-                color: var(--muted);
-            }
-            .char.cursor::after{
-                content: '';
-                position: absolute;
-                bottom:0;
-                left: 0;
-                width: 100%;
-                height: 2;
-                background: var(--accent);
-                animation: blink 1 step-end infinite;
-            }
-            @keyframes blink {
-                0%,100%{opacity: 1;} 50%{opacity: 0;}
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            transition: all 0.3s;
+        }
 
-            }
+        .stat-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            font-weight: 500;
+        }
 
-            #user-input{
-                width: 100%;
-                background: var(--surface2);
-                border: 2 solid var(--border);
-                border-radius: 12;
-                padding: 0.9rem 1.1rem;
-                font-family: var(--font-mono);
-                font-size: 1rem;
-                color: var(--text);
-                outline: none;
-                transition: border-color 0.2s, box-shadow 0.2s;
-            }
-            #user-input:focus{
-                border-color: var(--accent);
-                box-shadow: 0 0 0 3 var(--accent-glow);
+        #timer-val { color: var(--yellow); }
+        #acc-val   { color: var(--green);  }
 
-            }
-            #user-input:disabled{
-                opacity: 0.5;
-                cursor: not-allowed;
+        .timer-ring-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.25rem;
+        }
 
-            }
+        .timer-ring {
+            transform: rotate(-90deg);  
+        }
 
-            .input-hint{
-                font-size: 0.75rem;
-                color: var(--muted);
-                margin-top: 0.5rem;
-                text-align: right;
-            }
+        .ring-bg {
+            fill: none;
+            stroke: var(--faint);
+            stroke-width: 4; 
+        }
 
-            .btn-row{
-                display: flex;
-                gap: 0.75rem;
-                margin-top: 1.25rem;
-                justify-content: center;
-            }
-            .btn{
-                padding: 0.65rem 1.75rem;
-                border-radius: 10;
-                border: none;
-                font-family: var(--font-body);
-                font-weight: 600;
-                font-size: 0.9rem;
-                cursor: pointer;
-                transition: all 0.2s;
-            }
-            .btn-primary{
-                background: var(--accent);
-                color:#fff;
-                box-shadow: 0 4 14 var(--accent-glow);
-            }
-            
+        .ring-fill {
+            fill: none;
+            stroke: var(--yellow);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear, stroke 0.5s;
+        }
 
-        </style>
-    </head>
-    <body>
-        <!--header yahan haiii-->
-        <header class = "header">
-            <div class = "logo">
-                <div class = "logo-icon"> </div>
-                Typing Test
+        .ring-text {
+            position: absolute;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--yellow);
+            line-height: 1;
+        }
+
+        .test-container {
+            width: 100%;
+            max-width: 860px; 
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .ctrl-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .chip {
+            background: var(--surface2);
+            border: 1px solid var(--border); 
+            color: var(--muted);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+        }
+
+        .chip:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .chip.active {
+            background: var(--accent);
+            border-color: var(--accent);  
+            color: #fff;
+        }
+
+        .divider-v {
+            width: 1px;    
+            height: 24px;  
+            background: var(--border);
+            margin: 0 0.25rem;
+        }
+
+        .passage-wrap {
+            background: var(--surface2);
+            border-radius: 14px;   
+            padding: 1.5rem;       
+            margin-bottom: 1.25rem;  
+            line-height: 1.9;
+            font-size: 1.05rem;   
+            font-family: var(--font-mono);
+            letter-spacing: 0.01em;
+            min-height: 100px;    
+            user-select: none;
+        }
+
+        .char {
+            display: inline-block;
+            position: relative;
+        }
+
+        .char.correct { 
+            color: var(--green);
+        }
+
+        .char.wrong {
+            color: var(--red);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .char.pending {  
+            color: var(--muted);
+        }
+
+        .char.cursor::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            animation: blink 1s step-end infinite; 
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        #user-input {
+            width: 100%;
+            background: var(--surface2);
+            border: 2px solid var(--border);  
+            border-radius: 12px;  
+            padding: 0.9rem 1.1rem;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        #user-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);  
+        }
+
+        #user-input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .input-hint {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.65rem 1.75rem;
+            border-radius: 10px; 
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 14px var(--accent-glow);  
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px); 
+        }
+
+        .btn-secondary {
+            background: var(--surface2);
+            color: var(--text);
+            border: 1px solid var(--border);  
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+        }
+
+        .progress-wrap {
+            width: 100%;     
+            max-width: 860px; 
+            height: 4px;      
+            background: var(--faint);
+            border-radius: 999px; 
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;    
+            background: var(--accent);
+            border-radius: 999px;  
+            width: 0%;       
+            transition: width 0.3s ease;
+        }
+
+        .custom-text-wrap {
+            margin-bottom: 1.25rem;
+            display: none;
+        }
+
+        .custom-text-wrap.show {
+            display: block;
+        }
+
+        #custom-text-input { 
+            width: 100%;
+            background: var(--surface2);
+            border: 2px solid var(--border);  
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text);
+            outline: none;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.3s;
+        }
+
+        #custom-text-input:focus {
+            border-color: var(--accent);
+        }
+
+        .custom-hint {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.4rem;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);  
+            display: none;
+            place-items: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+
+        .overlay.show {
+            display: grid;
+        }
+
+        .result-card {
+            background: var(--surface);
+            border: 1px solid var(--border); 
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); 
+                  opacity: 0; 
+                 }
+            to   { transform: scale(1);   
+                  opacity: 1; 
+                 }
+        }
+
+        .result-emoji  { 
+            font-size: 3.5rem; 
+            margin-bottom: 
+                0.75rem; 
+        }
+        .result-title  { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            margin-bottom: 0.25rem; 
+        }
+        .result-sub    { 
+            color: var(--muted); 
+            font-size: 0.9rem; 
+            margin-bottom: 2rem; }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-stat{ background: var(--surface2); 
+                    border-radius: 12px; 
+                    padding: 1rem;
+                    }
+        .result-stat-val   { 
+            font-family: var(--font-mono); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--accent); 
+            line-height: 1; 
+            margin-bottom: 0.3rem; 
+        }
+        .result-stat-label { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.07em; 
+            color: var(--muted); 
+        }
+        .result-message    { 
+            font-size: 0.9rem; 
+            color: var(--muted); 
+            margin-bottom: 1.75rem; 
+            line-height: 1.5; }
+
+        .history-section {
+            width: 100%;
+            max-width: 860px; 
+            margin-top: 1rem;
+        }
+
+        .history-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .history-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .history-pill {
+            background: var(--surface);
+            border: 1px solid var(--border); 
+            border-radius: 999px;           
+            padding: 0.3rem 0.9rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .history-pill span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) { 
+            .stats-bar      { grid-template-columns: repeat(2, 1fr); }
+            .passage-wrap   { font-size: 0.95rem; }
+            .controls       { gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- header yahan hai -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">⌨</div>
+            Typing Test
+        </div>
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <!-- progress bar -->
+    <div class="progress-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- stats -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-value" id="wpm-val">0</div>
+            <div class="stat-label">WPM</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="acc-val">100%</div>
+            <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="chars-val">0</div>
+            <div class="stat-label">Characters</div>
+        </div>
+        <div class="stat-card">
+            <div class="timer-ring-wrap">
+                <svg class="timer-ring" width="48" height="48" viewBox="0 0 36 36" aria-hidden="true">
+                    <circle class="ring-bg"   cx="18" cy="18" r="15.9"/> 
+                    <circle class="ring-fill" id="ring-fill" cx="18" cy="18" r="15.9"/>
+                </svg>
+                <span class="ring-text" id="timer-val">60</span>
             </div>
-            <button class = "theme-btn" id = "theme-toggle" aria-label ="Toggle Theme">🌙</button>
-        </header>
+            <div class="stat-label">Seconds</div> 
+        </div>
+    </div>
 
-        <!--Progess bar idhar se shuru hai -->
-        <div class = "progress-wrap">
-            <div class = "progress-bar" id = "progress-bar"></div>
+    <!-- main test area -->
+    <div class="test-container">
+        <div class="controls">
+            <span class="ctrl-label">Mode</span>
+            <div class="chip-group">
+                <button class="chip active" data-diff="easy">Easy</button>
+                <button class="chip" data-diff="medium">Medium</button>
+                <button class="chip" data-diff="hard">Hard</button>
+                <button class="chip" data-diff="custom">Custom</button>
+            </div>
+            <div class="divider-v"></div>
+            <span class="ctrl-label">Time</span>
+            <div class="chip-group">
+                <button class="chip" data-time="30">30s</button>          
+                <button class="chip active" data-time="60">60s</button>
+                <button class="chip" data-time="120">120s</button>
+            </div>
         </div>
 
-        <!--Stats idhar dikhenge -->
-        <div class = "stats-bar">
-
-            <div class = "stat-card">
-                <div class = "stat-value" id = "wpm-val">0</div>    
-                <div class = "stat-label ">WPM</div>
-            </div>
-
-            <div class = "stat-card">
-                <div class = "stat-value" id = "acc-val">0%</div>    
-                <div class = "stat-label ">Accuracy</div>
-            </div>
-            <div class = "stat-card">
-                <div class = "stat-value" id = "chars-val">0</div>    
-                <div class = "stat-label ">Characters</div>
-            </div>
-
-            <div class = "stat-card">
-                <div class = "timer-ring-wrap">
-                    <svg class = "timer-ring" width = "48" height="48" viewBox ="0 0 36 36" aria-hidden = true>
-                        <circle class = "ring-bg" cx = "18" cu = "18" r = "15.9"/>
-                        <circle class = "ring-fill" id = "ring-fill" cx = "18" cy = "18" r = "15.9"/>
-                    </svg>
-                    <span class = "ring-text" id = "timer-val"> 60 </span>
-                </div>
-                <div class = "stat-label"> Seconds</div>>
-            </div>
+        <!-- custom text area -->
+        <div class="custom-text-wrap" id="custom-text-wrap">
+            <textarea id="custom-text-input" placeholder="Paste your own text (min 20 characters)"></textarea>
+            <div class="custom-hint">Paste a paragraph that has your weak words</div>
         </div>
 
+        <!-- passage dikhane ki jagah -->
+        <div class="passage-wrap" id="passage" aria-live="polite"></div>
 
-        <!--Asli kaam-->
-
-        <div class = "test-container">
-            <div class = "controls" >
-                <span class = "ctrl-label">Mode</span>
-                <div class="chip-group">
-                    <button class="chip active" data-diff="easy">Easy</button>
-                    <button class="chip" data-diff="medium">Medium</button>
-                    <button class="chip" data-diff="hard">Hard</button>
-                    <button class="chip" data-diff="custom">Custom</button>
-
-                </div>
-                <div class="divider-v"></div>
-                <span class="ctrl-label">Time</span>
-                <div class="chip-group">
-                    <button clas="chip" data-time="30"> 30s</button> 
-                    <button class="chip active" data-time="60">60s</button>
-                    <button class="chip" data-time = "120">120s</button>               
-                </div>
-            </div>
-
-
-            <!--khud ka text aur customization-->
-            <div class="custom-text-wrap" id="custom-text-wrap">
-                <textarea id="custom-text-input" placeholder="Paste your own text"></textarea>
-                <div class="custom-hint"> Paste a paragraph that has your weak words </div>
-            </div>
-
-
-            <!--passage dikhane ki jagah-->
-
-            <div class="passage-wrap" id="passage" aria-live="polite"></div>
-
-            <!--Type dikhane ki jagah-->
-            <input type="text" id="user-input"
-            placeholder="Start Typing"
+        <!-- typing input -->
+        <input type="text" id="user-input"
+            placeholder="Click here and start typing..."
             autocomplete="off" autocorrect="off"
             autocapitalize="off" spellcheck="false"/>
-            <div class="input-hint" id="input-hint">Press <kbd>Tab</kbd> to restart anytime</div>
-            
-            <!--Action wale buttons-->
+        <div class="input-hint" id="input-hint">Press <kbd>Tab</kbd> to restart anytime</div>
 
-            <div class="btn-row">
-                <button class="btn btn-primary" id="start-btn" >Start Test</button>
-                <button class="btn btn-primary" id="'reset-btn">Reset</button>
+        <!-- buttons -->
+        <div class="btn-row">
+            <button class="btn btn-primary"   id="start-btn">▶ Start Test</button>
+            <button class="btn btn-secondary" id="reset-btn">↺ Reset</button> 
+        </div>
+    </div>
+
+    <!-- history -->
+    <div class="history-section">
+        <div class="history-title">Recent Scores</div>
+        <div class="history-list" id="history-list">
+            <span style="color:var(--faint);font-size:0.8rem;">No test yet</span>
+        </div>
+    </div>
+
+    <!-- result popup -->
+    <div class="overlay" id="result-overlay" role="dialog" aria-modal="true">
+        <div class="result-card">
+            <div class="result-emoji" id="result-emoji">🚀</div>
+            <div class="result-title" id="result-title">Great Job!</div>
+            <div class="result-sub"   id="result-sub">Here's your result</div>
+            <div class="result-grid">
+                <div class="result-stat">
+                    <div class="result-stat-val"   id="res-wpm">0</div>
+                    <div class="result-stat-label">WPM</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-val"   id="res-acc">0%</div>
+                    <div class="result-stat-label">Accuracy</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-val"   id="res-chars">0</div>
+                    <div class="result-stat-label">Chars Typed</div>
+                </div>
+            </div>
+            <div class="result-message" id="result-message"></div>
+            <div style="display:flex;gap:0.75rem;justify-content:center;">
+                <button class="btn btn-primary"   id="retry-btn">↺ Try Again</button>
+                <button class="btn btn-secondary" id="close-result-btn">✕ Close</button>
             </div>
         </div>
-
-        <!--score ka record-->
-
-        <div class="history-section">
-            <div class="history-title">Recent Scores</div>
-            <div class="history-list" id="history-list">
-                <span style="color:var(--faint); font-size: 0.8rem;">No test yet</span>
-            </div>
-        </div>
-
-        <!--Result -->
-
-        <div class="overlay" id="result-overlay" role="dialog" aria-modal="true">
-            <div class="result-card">
-                <div class="result-emoji"  id="result-emoji">🚀</div>
-                <div class="result-title"  id="result-title">Great Job!</div>
-                <div class="result-sub"    id="result-sub">Here your result</div>
-        <div class="result-grid">
-        <div class="result-stat">
-                <div class="result-stat-val"   id="res-wpm">0</div>
-                <div class="result-stat-label">WPM</div>
-        </div>
-      <div class="result-stat">
-            <div class="result-stat-val"   id="res-acc">0%</div>
-            <div class="result-stat-label">Accuracy</div>
-      </div>
-      <div class="result-stat">
-            <div class="result-stat-val"   id="res-chars">0</div>
-            <div class="result-stat-label">Chars Typed</div>
-      </div>
     </div>
-        <div class="result-message" id="result-message"></div>
-        <div style="display:flex;gap:0.75rem;justify-content:center;">
-            <button class="btn btn-primary"   id="retry-btn">↺ Try Again</button>
-            <button class="btn btn-secondary" id="close-result-btn">✕ Close</button>
-    </div>
-  </div>
-</div>
+
 <script>
 
-    // theme badalne ke liye 
-    let isDark = true;
-    document.getElementById('theme-toggle').addEventListener('click',()=>{
-        isDark = !isDark;
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        document.getElementById('theme-toggle').textContent = isDark ? '🌙' :'☀️';
-    });
-
     // paragraphs sare ke sare
-
     const passages = {
-  easy: [
-    "The sun rises in the east and sets in the west every single day. Birds sing in the morning and the world feels fresh and new. Life is full of small joys if you take the time to notice them.",
-    "A cat sat on the mat and looked at the door. The wind blew softly through the open window. It was a calm and quiet afternoon with nothing to do but rest.",
-    "She opened the book and began to read the first page. The story was about a young girl who loved to explore the forest near her home. Every day she found something new and exciting."
-  ],
-  medium: [
-    "Programming is the art of telling a computer what to do using a language it understands. Every program begins with a problem that needs solving, and the programmer must break it down into logical steps.",
-    "Java is one of the most widely used programming languages in the world. It follows the principle of write once run anywhere, meaning code compiled in Java can run on any device with a Java virtual machine installed.",
-    "Data structures are the building blocks of efficient software. Arrays store elements in order, linked lists connect nodes dynamically, and trees organize data hierarchically. Choosing the right structure can make the difference between fast and slow code."
-  ],
-  hard: [
-    "Concurrency in programming refers to the execution of multiple instruction sequences at the same time. Managing shared resources between concurrent threads requires synchronization mechanisms such as mutexes, semaphores, and monitors to prevent race conditions.",
-    "Cryptographic hash functions transform arbitrary input data into fixed-length output strings. Properties such as collision resistance, preimage resistance, and avalanche effect ensure that even a minor change in input produces an entirely different hash value.",
-    "The time complexity of an algorithm describes how its execution time grows relative to the input size. An O(n log n) algorithm such as merge sort significantly outperforms an O(n squared) algorithm like bubble sort as the dataset size increases."
-  ]
-};
+        easy: [
+            "The sun rises in the east and sets in the west every single day. Birds sing in the morning and the world feels fresh and new. Life is full of small joys if you take the time to notice them.",
+            "A cat sat on the mat and looked at the door. The wind blew softly through the open window. It was a calm and quiet afternoon with nothing to do but rest.",
+            "She opened the book and began to read the first page. The story was about a young girl who loved to explore the forest near her home. Every day she found something new and exciting."
+        ],
+        medium: [
+            "Programming is the art of telling a computer what to do using a language it understands. Every program begins with a problem that needs solving, and the programmer must break it down into logical steps.",
+            "Java is one of the most widely used programming languages in the world. It follows the principle of write once run anywhere, meaning code compiled in Java can run on any device with a Java virtual machine installed.",
+            "Data structures are the building blocks of efficient software. Arrays store elements in order, linked lists connect nodes dynamically, and trees organize data hierarchically. Choosing the right structure can make the difference between fast and slow code."
+        ],
+        hard: [
+            "Concurrency in programming refers to the execution of multiple instruction sequences at the same time. Managing shared resources between concurrent threads requires synchronization mechanisms such as mutexes, semaphores, and monitors to prevent race conditions.",
+            "Cryptographic hash functions transform arbitrary input data into fixed-length output strings. Properties such as collision resistance, preimage resistance, and avalanche effect ensure that even a minor change in input produces an entirely different hash value.",
+            "The time complexity of an algorithm describes how its execution time grows relative to the input size. An O(n log n) algorithm such as merge sort significantly outperforms an O(n squared) algorithm like bubble sort as the dataset size increases."
+        ]
+    };
 
+    // sare variables
+    let passage      = '';
+    let charIndex    = 0;
+    let totalChars   = 0;
+    let correctChars = 0;
+    let started      = false;
+    let finished     = false;
+    let timer        = null;
+    let timeLeft     = 60;
+    let totalTime    = 60;
+    let difficulty   = 'easy';
+    let history      = [];
 
-// sare variable
+    // getElementByID wale
+    const passageEl   = document.getElementById('passage');
+    const inputEl     = document.getElementById('user-input');
+    const wpmEl       = document.getElementById('wpm-val');
+    const accEl       = document.getElementById('acc-val');
+    const charsEl     = document.getElementById('chars-val');
+    const timerEl     = document.getElementById('timer-val');
+    const ringFill    = document.getElementById('ring-fill');
+    const progressBar = document.getElementById('progress-bar');
+    const startBtn    = document.getElementById('start-btn');
+    const overlay     = document.getElementById('result-overlay');
+    const historyList = document.getElementById('history-list');
+    const customWrap  = document.getElementById('custom-text-wrap');
+    const customInput = document.getElementById('custom-text-input');
 
-let passage ='';
-let charIndex =0;
-let totalChars=0;
-let correctChars=0;
-let started=false;
-let finished=false;
-let timer=null;
-let timeLeft=60;
-let totalTime=60;
-let difficulty='easy';
-let history=[];
-
-// getElementByID waleee
-
-const passageE1 = document.getElementById('passage');
-const inputE1 = document.getElementById('user-input');
-const wpmE1 = document.getElementById('wpm-val');
-const accE1 = document.getElementById('acc-val');
-const charsE1 = document.getElementById('chars-val');
-const timerE1 = document.getElementById('timer-val');
-const ringFill = document.getElementById('ring-fill');
-const progressBar = document.getElementById('progress-bar');
-const startbtn = document.getElementById('start-btn');
-const overlay = document.getElementById('result-overlay');
-const historyList = document.getElementById('history-list');
-const customWrap = document.getElementById('custom-text-wrap');
-const customInput = document.getElementById('custom-text-input');
-
-
-//passage ke text ke liye
-
-function getPassage(){
-    if (difficulty ==='custom'){
-        const t = customInput.value.trim();
-        return t.length >=20 ? t: passages.easy[0];
-
-    }
-    const pool = passages[difficulty];
-    return pool[Math.floor(Math.random()* pool.length)];
-}
-
-function buildPassage(){
-    passage = getPassage();
-    charIndex = 0; 
-    totalChars = 0; 
-    correctChars = 0; 
-    passageE1.innerHTML = '';
-
-    for (let i = 0; i < passage.length; i ++){
-        const span = document.createElement('span');
-        span.classList.add('char','pending');
-        span.dataset.index = i;
-        if(passage[i] === ''){
-            span.textContent = '\u00a0';
-
+    // passage ke text ke liye
+    function getPassage() {
+        if (difficulty === 'custom') {
+            const t = customInput.value.trim();
+            if (t.length >= 20) {
+                return t;
+            }
+            return passages.easy[0];
         }
-        else{
-            span.textContent = passage[i];
+        const pool = passages[difficulty];
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function buildPassage() {
+        passage      = getPassage();
+        charIndex    = 0;
+        totalChars   = 0;
+        correctChars = 0;
+        passageEl.innerHTML = '';
+
+        for (let i = 0; i < passage.length; i++) {
+            const span = document.createElement('span');
+            span.classList.add('char', 'pending');
+            span.dataset.index = i;
+
+            if (passage[i] === ' ') { 
+                span.textContent = '\u00a0';
+            } else {
+                span.textContent = passage[i];
+            }
+
+            if (i === 0) {
+                span.classList.add('cursor');
+            }
+
+            passageEl.appendChild(span);
         }
-        if(i===0){
-            span.classList.add('cursor');
+    }
 
+    function getChar(i) {
+        return passageEl.querySelector('.char[data-index="' + i + '"]');
+    }
+
+    // accuracy aur speed calculate karne ke liye
+    function calcWPM() {
+        const elapsed = (totalTime - timeLeft) || 1;
+        return Math.round((correctChars / 5) / (elapsed / 60));
+    }
+
+    function calcAcc() {
+        if (totalChars === 0) return 100;
+        return Math.round((correctChars / totalChars) * 100);
+    }
+
+    // updating live stats
+    function updateStats() {
+        wpmEl.textContent   = calcWPM();
+        accEl.textContent   = calcAcc() + '%';
+        charsEl.textContent = correctChars;
+
+        const pct = (totalChars / passage.length) * 100;
+        progressBar.style.width = Math.min(pct, 100) + '%';
+    }
+
+    // updating the timer and ring
+    function updateTimer() {
+        timerEl.textContent = timeLeft;
+        const pct = timeLeft / totalTime;
+        ringFill.style.strokeDashoffset = 100 * (1 - pct);
+
+        if (pct > 0.5) {
+            ringFill.style.stroke = 'var(--yellow)';
+        } else if (pct > 0.25) {
+            ringFill.style.stroke = 'var(--accent)';
+        } else {
+            ringFill.style.stroke = 'var(--red)';
         }
-        passageE1.appendChild(span);
-    }
-}
-
-function getChar(i){
-    return passageE1.querySelector('.char[data-index="'+i+'"]');
-}
-
-// accuracy aur speeed calculate karne ke liye 
-
-
-function calcWPM(){
-    const elapsed = (totalTime - timeLeft) || 1;
-
-    return Math.round((correctChars/5)/(elapsed/60));
-
-}
-
-function calcAcc(){
-    if (totalChars === 0) return 100;
-    return Math.round((correctChars/totalChars)* 100);
-}
-
-//updating live stats 
-
-function updateStats(){
-    wpmE1.textContent = calcWPM();
-    accE1.textContent = calcAcc() + '%';
-    charsE1.textContent = correctChars;
-
-    //bar ki length changes 
-
-    const pct = (totalChars / passage.length) * 100;
-    progressBar.style.width = Math.min(pct,100) + '%';
-}
-
-// updating the timer and ring
-
-function updateTimer(){
-    timerE1.textContent = timeLeft;
-    const pct = timeLeft/totalTime;
-
-    ringFill.style.strokeDashoffset = 100 * (1-pct);
-
-    if (pct > 0.5) ringFill.style.stroke = 'var(--yellow)';
-    else if (pct > 0.25) ringFill.style.stroke = 'var(--accent)';
-    else ringFill.style.stroke = 'var(--red)';
-}
-
-// timer ka countdown
-
-function startTimer(){
-    if (timer) 
-    clearInterval(timer);
-
-    timer = setInterval(() => {
-        timeLeft --;
-        updateTimer();
-        if(timeLeft <= 0) 
-        endTest();
-        },1000); 
-    
-}
-
-// end test
-
-function endTest(){
-    if(finished) return;
-
-    finished = true;
-    clearInterval(timer);
-    inputE1.disabled = true;
-    inputE1.blur();
-
-    showResult();
-
-}
-
-//show result 
-
-function showResult(){
-    const wpm = calcWPM();
-    const acc = calcAcc();
-
-    let emoji, ttile, message;
-
-    if(wpm >= 80 && acc >=95){
-        emoji = '🏆'
-        title = 'Legendary';
-        message = '${wpm} WPM - very impressive keep it up.'
-        
-    }
-    else if(wpm>= 60 && acc >=90){
-        emoji = '🚀';
-        title ='Fast';
-        message = '${wpm} WPM - Great ';
-    } 
-    else if(wpm >=40 && acc >=85){
-        emoji = '⚡️';
-        title = 'Nice';
-        message = '${wpm} WPM - very good';
-    }
-    else if(wpm >= 25){
-        emoji = '💪';
-        title = 'Getting There';
-        message = '${wpm} WPM - solid';
-    }
-    else{
-        emoji = '☘️';
-        title = 'Keep practising';
-        message = '${wpm} WPM scope for improvement';
-
     }
 
-    document.getElementById('result-emoji').textContent = emoji;
-    document.getElementById('result-title').textContent = title;
-    document.getElementById('res-wpm').textContent = wpm;
-    document.getElementById('res-acc').textContent = acc + '%';
-    document.getElementById('res-chars').textContent  = totalChars;
-    document.getElementById('result-message').textContent = message;
-
-    overlay.classList.add('show');
-
-    historyList.unshift({
-        wpm,acc,time: totalTime, diff: difficulty});
-    if (history.length>6) history.pop();
-    
-    renderHistory();
-}
-
-// rnder history 
-
-function renderHistory(){
-    if(history.length === 0) return;
-
-    historyList.innerHTML = '';
-
-    for(let i = 0;i <history.length;i++){
-        const h = history[i];
-        const pill = document.createElement('div');
-        pill.className = 'history-pill';
-        pill.innerHTML = h.diff + '' +h.time +'s -<spam>'+ h.wpm+ 'WPM -<span> '+h.acc +'%';
-        historyList.appendChild(pill);
+    // timer ka countdown
+    function startTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(function() {
+            timeLeft--;
+            updateTimer();
+            if (timeLeft <= 0) {
+                endTest();
+            }
+        }, 1000);
     }
-}
 
-function resetTest(){
-    clearInterval(timer);
-    started = false;
-    finished = false;
-    timeLeft = totalTime;
-    inputE1.value = '';
-    inputE1.disabled = false;
-    wpmE1.textContent = '0';
-    accE1.textContent = '100%';
-    charsE1.textContent = '0';
-    progressBar.style.width = '0%';
-    updateTimer();
-    buildPassage();
-    startbtn.textContent = 'start Test';
-    overlay.classList.remove('show');
-    document.getElementById('input-hint').textContent = 'press tab to restart';
-}
- 
-// keyboard clicks ke liye event listeners
-
-inputE1.addEventListener('input', function(e){
-    if(!started || finished )return;
-
-    const typed = e.data;
-    const expected = passage[charIndex];
-
-    if (!typed || charIndex >= passage.length) return ;
-
-    const charsE1 = getChar(charIndex);
-    if(!charsE1)return;
-
-    charsE1.classList.remove('cursor');
-    totalChars++;
-
-    if(typed===expected){
-        charsE1.classList.add('correct');
-        correctChars++;
+    // end test
+    function endTest() {
+        if (finished) return;
+        finished = true;
+        clearInterval(timer);
+        inputEl.disabled = true;
+        inputEl.blur();
+        showResult();
     }
-    else{
-        charsE1.classList.add('wrong');
-    }
-    charIndex++;
 
-    const next = getChar(charIndex);
-    if(next){
-        next.classList.add('cursor');
-        next.scrollIntoView({block:'nearest', behavior: 'smooth'});
-    }
-    inputE1.value = '';
+    // show result
+    function showResult() {
+        const wpm = calcWPM();
+        const acc = calcAcc();
 
-    updateStats();
+        let emoji, title, message;
 
-    if(charIndex >= passage.length) endTest();
-
-});
-
-inputE1.addEventListener('keydown', function(e){
-    if(e.key ==='Tab'){
-        e.preventDefault();
-        resetTest();
-        inputE1.focus();
-    }
-    if(e.key ==='Backspace') e.preventDefault();
-
-
-});
-
-startbtn.addEventListener('click',function(){
-    if(started && !finished){
-        endTest();
-        return;
-
-    }
-    resetTest();
-    started = true;
-    finished = false;
-    inputE1.disabled = false;
-    inputE1.focus();
-    startTimer();
-    startbtn.textContent = 'End before';
-    document.getElementById('input-hint').textContent = 'No backsapce avaliable';
-});
-
-document.getElementById('reset-btn').addEventListener('click',function(){
-    resetTest();
-    inputE1.focus();
-});
-
-document.getElementById('retry-btn').addEventListener('click',function(){
-    overaly.classList.remove('show');
-    resetTest();
-    startbtn.click();
-});
-
-document.getElementById('close-result-btn').addEventListener('click',function(){
-    overlay.classList.remove('show');
-    resetTest();
-
-});
-
-
-//dificulty wale 
-
-const diffBtns = document.querySelectorAll('[data-diff]');
-diffBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-        diffBtns.forEach(function(b){
-            b.classList.add('active');
-        });
-        btn.classList.add('active');
-        difficulty = btn.dataset.diff;
-
-        if(difficulty ==='custom'){
-            customWrap.classList.add('show');
-
+        if (wpm >= 80 && acc >= 95) {
+            emoji   = '🏆';
+            title   = 'Legendary';
+            message = wpm + ' WPM - very impressive, keep it up!'; 
+        } else if (wpm >= 60 && acc >= 90) {
+            emoji   = '🚀';
+            title   = 'Fast';
+            message = wpm + ' WPM - Great!';
+        } else if (wpm >= 40 && acc >= 85) {
+            emoji   = '⚡';
+            title   = 'Nice';
+            message = wpm + ' WPM - Very good!';
+        } else if (wpm >= 25) {
+            emoji   = '💪';
+            title   = 'Getting There';
+            message = wpm + ' WPM - Solid effort!';
+        } else {
+            emoji   = '🌱';
+            title   = 'Keep Practising';
+            message = wpm + ' WPM - Scope for improvement!';
         }
-        else customWrap.classList.remove('show')
-        resetTest();
-    });
-});
 
-//time wale chip
+        document.getElementById('result-emoji').textContent   = emoji;
+        document.getElementById('result-title').textContent   = title;
+        document.getElementById('res-wpm').textContent        = wpm;
+        document.getElementById('res-acc').textContent        = acc + '%';
+        document.getElementById('res-chars').textContent      = totalChars;
+        document.getElementById('result-message').textContent = message;
 
-const timeBtns = document.querySelectorAll('[data-time]');
-timeBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-        timeBtns.forEach(function(b){
-            b.classList.remove('active');
-        });
-        btn.classList.add('active');
-        totalTime = parseInt(btn.dataset.time);
+        overlay.classList.add('show');
+
+        history.unshift({ wpm: wpm, acc: acc, time: totalTime, diff: difficulty }); 
+        if (history.length > 6) {
+            history.pop();
+        }
+        renderHistory();
+    }
+
+    // render history
+    function renderHistory() {
+        if (history.length === 0) return;
+        historyList.innerHTML = '';
+
+        for (let i = 0; i < history.length; i++) {
+            const h    = history[i];
+            const pill = document.createElement('div');
+            pill.className = 'history-pill';
+            pill.innerHTML = h.diff + ' ' + h.time + 's — <span>' + h.wpm + ' WPM</span> · ' + h.acc + '%'; // fix: was <spam> typo + missing closing tags
+            historyList.appendChild(pill);
+        }
+    }
+
+    function resetTest() {
+        clearInterval(timer);
+        started  = false;
+        finished = false;
         timeLeft = totalTime;
+        inputEl.value       = '';
+        inputEl.disabled    = false;
+        wpmEl.textContent   = '0';
+        accEl.textContent   = '100%';
+        charsEl.textContent = '0';
+        progressBar.style.width = '0%';
         updateTimer();
-        resetTest();
+        buildPassage();
+        startBtn.textContent = '▶ Start Test';
+        overlay.classList.remove('show');
+        document.getElementById('input-hint').textContent = 'Press Tab to restart anytime';
+    }
 
+    // keyboard clicks ke liye event listeners
+    inputEl.addEventListener('input', function(e) {
+        if (!started || finished) return;
+
+        const typed    = e.data;
+        const expected = passage[charIndex];
+
+        if (!typed || charIndex >= passage.length) return;
+
+        const spanEl = getChar(charIndex); // fix: was const charsEl which shadowed the outer charsEl DOM variable
+        if (!spanEl) return;
+
+        spanEl.classList.remove('cursor');
+        totalChars++;
+
+        if (typed === expected) {
+            spanEl.classList.add('correct');
+            correctChars++;
+        } else {
+            spanEl.classList.add('wrong');
+        }
+
+        charIndex++;
+
+        const next = getChar(charIndex);
+        if (next) {
+            next.classList.add('cursor');
+            next.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+
+        inputEl.value = '';
+        updateStats();
+
+        if (charIndex >= passage.length) {
+            endTest();
+        }
     });
-});
 
-//theme change karne ke liye
+    inputEl.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            resetTest();
+            inputEl.focus();
+        }
+        if (e.key === 'Backspace') {
+            e.preventDefault();
+        }
+    });
 
-let darkHai = true;
+    startBtn.addEventListener('click', function() {
+        if (started && !finished) {
+            endTest();
+            return;
+        }
+        resetTest();
+        started  = true;
+        finished = false;
+        inputEl.disabled = false;
+        inputEl.focus();
+        startTimer();
+        startBtn.textContent = '⏹ End Early';
+        document.getElementById('input-hint').textContent = 'No backspace available';
+    });
 
-document.getElementById('theme-toggle').addEventListener('click',function(){
-    darkHai = !darkHai;
+    document.getElementById('reset-btn').addEventListener('click', function() {
+        resetTest();
+        inputEl.focus();
+    });
 
-    if(darkHai){
-        document.documentElement.setAttribute('data-theme','dark');
-        document.getElementById('theme-toggle').textContent ='🌙';
+    document.getElementById('retry-btn').addEventListener('click', function() {
+        overlay.classList.remove('show'); // fix: was overaly (typo)
+        resetTest();
+        startBtn.click();
+    });
 
-    }
-    else{
-        document.documentElement.setAttribute('data-theme','light');
-        document.getElementById('theme-toggle').textContent = '☀️';
-    }
-});
+    document.getElementById('close-result-btn').addEventListener('click', function() {
+        overlay.classList.remove('show');
+        resetTest();
+    });
 
-//initialisaing
+    // difficulty wale chips
+    const diffBtns = document.querySelectorAll('[data-diff]');
+    diffBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            diffBtns.forEach(function(b) {
+                b.classList.remove('active'); // fix: was .add('active') so all chips turned active
+            });
+            btn.classList.add('active');
+            difficulty = btn.dataset.diff;
 
-buildPassage();
-updateTimer();
-inputE1.focus();
+            if (difficulty === 'custom') {
+                customWrap.classList.add('show');
+            } else {
+                customWrap.classList.remove('show');
+            }
+            resetTest();
+        });
+    });
+
+    // time wale chips
+    const timeBtns = document.querySelectorAll('[data-time]');
+    timeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            timeBtns.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            totalTime = parseInt(btn.dataset.time);
+            timeLeft  = totalTime;
+            updateTimer();
+            resetTest();
+        });
+    });
+
+    // theme change karne ke liye
+    let darkHai = true;
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        darkHai = !darkHai;
+        if (darkHai) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('theme-toggle').textContent = '🌙';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.getElementById('theme-toggle').textContent = '☀️';
+        }
+    }); // fix: removed the duplicate arrow-function theme listener that was at the top
+
+    // initialising
+    buildPassage();
+    updateTimer();
+    inputEl.focus();
 
 </script>
 </body>
